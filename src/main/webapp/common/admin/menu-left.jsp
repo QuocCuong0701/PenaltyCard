@@ -55,10 +55,10 @@
                 </li>
                 <li class="nav-item">
                     <a href="<c:url value="/admin-product?type=list"/>">
-                        <i class="fas fa-box-open"></i><p>Quản lí sản phẩm</p>
+                        <i class="fas fa-box-open"></i><p>Thống kê thẻ phạt</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <%--<li class="nav-item">
                     <a href="<c:url value="/admin-user?type=list"/>">
                         <i class="fas fa-users"></i><p>Quản lí người dùng</p>
                     </a>
@@ -67,7 +67,7 @@
                     <a href="<c:url value="/admin-bill?type=list"/>">
                         <i class="fas fa-file-alt"></i><p>Quản lí đơn hàng</p>
                     </a>
-                </li>
+                </li>--%>
             </ul>
         </div>
     </div>

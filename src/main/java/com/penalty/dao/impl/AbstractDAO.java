@@ -10,9 +10,9 @@ import java.util.ResourceBundle;
 
 public class AbstractDAO<T> implements GenericDAO<T> {
 
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
+    private ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
 
-    public Connection getConnection() {
+    private Connection getConnection() {
         try {
             Class.forName(resourceBundle.getString("driverName"));
             String url = resourceBundle.getString("url");

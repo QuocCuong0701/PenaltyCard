@@ -6,7 +6,7 @@ drop table if exists giai_dau;
 create table giai_dau (
     id int primary key auto_increment not null,
     ma_giai_dau varchar(255),
-    ten_giai_dau varchar(2255)
+        ten_giai_dau varchar(2255)
 );
 -- vong dau
 drop table if exists vong_dau;
@@ -20,10 +20,12 @@ create table vong_dau (
 drop table if exists tran_dau_doi_bong;
 create table tran_dau_doi_bong (
     id int primary key auto_increment not null,
-    tran_dau int(10),
-    doi_bong int(10),
-    ma varchar(255),
-    ghi_chu varchar(255)
+    tran_dau_id int(10),
+    doi_bong_id int(10),
+    ghi_chu varchar(255),
+    so_the_vang int(10),
+    so_the_do int(10),
+    so_pha_pham_loi int(10)
 );
 -- doi bong
 drop table if exists doi_bong;
@@ -61,7 +63,6 @@ drop table if exists tran_dau;
 create table tran_dau (
     id int primary key auto_increment not null,
     vong_dau_id int(10),
-    ket_qua_id int(10),
     san_dau_id int(10),
     ngay varchar(255),
     gio varchar(255),

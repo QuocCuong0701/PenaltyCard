@@ -70,27 +70,27 @@
                         </div>
                     </div>
                     <div class="row">
-                        <c:forEach var="listProducts" items="${model.listResult}">
+                        <c:forEach var="tddb" items="${model.listResult}">
                             <div class="col-md-4 col-sm-6">
                                 <div class="single-item-area">
                                     <div class="single-item">
                                         <div class="product-item-img">
-                                            <a href="<c:url value="/product-detail?product_id=${listProducts.product_id}"/>">
-                                                <c:if test="${listProducts.product_image != null}">
-                                                    <img class="primary-img" src="<c:url value="${listProducts.product_image}"/>" alt="item" style="width: 264px;height: 230px;" />
-                                                    <img class="secondary-img" src="<c:url value="${listProducts.product_image}"/>" alt="item" style="width: 264px; height: 230px;" />
+                                            <a href="<c:url value="/product-detail?product_id=${tddb.product_id}"/>">
+                                                <c:if test="${tddb.product_image != null}">
+                                                    <img class="primary-img" src="<c:url value="${tddb.product_image}"/>" alt="item" style="width: 264px;height: 230px;" />
+                                                    <img class="secondary-img" src="<c:url value="${tddb.product_image}"/>" alt="item" style="width: 264px; height: 230px;" />
                                                 </c:if>
-                                                <c:if test="${listProducts.product_image == null}">
+                                                <c:if test="${tddb.product_image == null}">
                                                     <img class="primary-img" src="<c:url value="/template/web/img/notfound.png"/>" alt="item" style="width: 264px;height: 230px;" />
                                                 </c:if>
                                             </a>
                                             <div class="product-item-action">
-                                                <a href="<c:url value="/product-detail?product_id=${listProducts.product_id}"/>"><i class="fa fa-external-link"></i></a>
-                                                <a href="<c:url value="/cart?act=add&product_id=${listProducts.product_id}"/>"><i class="fa fa-shopping-cart"></i></a>
+                                                <a href="<c:url value="/product-detail?product_id=${tddb.product_id}"/>"><i class="fa fa-external-link"></i></a>
+                                                <a href="<c:url value="/cart?act=add&product_id=${tddb.product_id}"/>"><i class="fa fa-shopping-cart"></i></a>
                                             </div>
                                         </div>
                                         <div class="single-item-content">
-                                            <h2><a href="<c:url value="/product-detail?product_id=${listProducts.product_id}"/>">${listProducts.product_name}</a></h2>
+                                            <h2><a href="<c:url value="/product-detail?product_id=${tddb.product_id}"/>">${tddb.product_name}</a></h2>
                                             <div class="best-product-rating">
                                                 <a href="#"><i class="fa fa-star"></i></a>
                                                 <a href="#"><i class="fa fa-star"></i></a>
@@ -98,11 +98,11 @@
                                                 <a href="#"><i class="fa fa-star"></i></a>
                                                 <a href="#"><i class="fa fa-star"></i></a>
                                             </div>
-                                            <h3><fmt:formatNumber type="number" pattern="###,###" value="${listProducts.product_price}"/> đ</h3>
+                                            <h3><fmt:formatNumber type="number" pattern="###,###" value="${tddb.product_price}"/> đ</h3>
                                         </div>
                                     </div>
                                     <div class="item-action-button fix">
-                                        <a href="<c:url value="/cart?act=add&product_id=${listProducts.product_id}"/>">Thêm Vào Giỏ</a>
+                                        <a href="<c:url value="/cart?act=add&product_id=${tddb.product_id}"/>">Thêm Vào Giỏ</a>
                                         <div class="item-action-icon">
                                             <a href="#"><i class="fa fa-heart"></i></a>
                                             <a href="#"><i class="fa fa-signal"></i></a>

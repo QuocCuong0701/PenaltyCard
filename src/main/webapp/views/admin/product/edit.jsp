@@ -2,9 +2,10 @@
 <%@include file="/common/taglib.jsp"%>
 <c:url var="APIurl" value="/api-admin-product"/>
 <c:url var ="ProductURL" value="/admin-product"/>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Cập nhật sản phẩm</title>
+    <title>Thống Kê Chi Tiết</title>
 </head>
 <body>
 <div class="content">
@@ -20,13 +21,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<c:url value="/admin-product?type=list"/> ">Quản Lý Sản Phẩm</a>
+                    <a href="<c:url value="/admin-product?type=list"/> ">Thống Kê Thẻ Phạt</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Cập Nhật Sản Phẩm</a>
+                    <a href="#">Thông Tin Chi Tiết</a>
                 </li>
             </ul>
         </div>
@@ -35,79 +36,39 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Cập Nhật Sản Phẩm</h4>
+                            <h4 class="card-title">Thông Tin Chi Tiết</h4>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="formSubmit">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <input type="hidden" value="${model.product_id}" id="product_id" name="product_id"/>
-                                    <div class="form-group form-group-default" style="height: 46px;">
-                                        <select class="form-control" id="category_id" name="category_id">
-                                            <c:if test="${empty model.category_id}">
-                                                <option value="">Chọn loại sản phẩm</option>
-                                                <c:forEach var="item" items="${categories}">
-                                                    <option value="${item.category_id}">${item.category_name}</option>
-                                                </c:forEach>
-                                            </c:if>
-                                            <c:if test="${not empty model.category_id}">
-                                                <option value="">Chọn loại sản phẩm</option>
-                                                <c:forEach var="item" items="${categories}">
-                                                    <option value="${item.category_id}" <c:if test="${item.category_id == model.category_id}">selected="selected"</c:if>>
-                                                            ${item.category_name}
-                                                    </option>
-                                                </c:forEach>
-                                            </c:if>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="form-group form-group-default">
-                                        <label>Tên sản phẩm</label>
-                                        <input id="addName" type="text" class="form-control" name="product_name" value="${model.product_name}" placeholder="Điền tên sản phẩm">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 pr-0">
-                                    <div class="form-group form-group-default">
-                                        <label>Hình ảnh</label>
-                                        <input type="file" value="${model.product_image}" id="product_image" name="product_image" onchange="chooseImage(event)" accept=".png, .jpg, .jpeg"
-                                               size="50" style="width: 200px; display: inline"/>
-                                        <img id="show_image" src="${model.product_image}" alt=""  style="width: 80px; border: solid 1px #d5d5d5" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Giá</label>
-                                        <c:if test="${model.product_id != 0}">
-                                            <input type="text" class="form-control" id="product_price" name="product_price" value="<fmt:formatNumber pattern="###" value="${model.product_price}"/>"/>
-                                        </c:if>
-                                        <c:if test="${model.product_id == 0}">
-                                            <input type="text" class="form-control" id="product_price" name="product_price" value=""/>
-                                        </c:if>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group form-group-default">
-                                        <label>Mô tả</label>
-                                        <textarea rows="" cols="" id="product_description" name="product_description" style="width: 820px;height: 175px">${model.product_description}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group form-group-default">
-                                        <label>Chi tiết</label>
-                                        <textarea rows="" cols="" id="product_detail" name="product_detail" style="width: 820px;height: 175px">${model.product_detail}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="card-footer">
-                        <div class="d-flex align-items-center">
-                            <button type="submit" id="btnUpdateProduct" class="btn btn-primary btn-warning btn-round">
-                                <i class="fa fa-edit"></i>
-                                Cập Nhật Sản Phẩm
-                            </button>
+                        <div class="table-responsive">
+                            <table id="add-row" class="display table table-striped table-hover" >
+                                <thead>
+                                <tr>
+                                    <th>Mã đội</th>
+                                    <th>Tên đội</th>
+                                    <th>Tên sân</th>
+                                    <th>Số thẻ vàng</th>
+                                    <th>Số thẻ đỏ</th>
+                                    <th>Số pha phạm lỗi</th>
+                                    <th>Tên vòng đấu</th>
+                                    <th>Thời gian</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="thongke" items="${model.listResult}">
+                                    <tr>
+                                        <td>${thongke.maDoi}</td>
+                                        <td>${thongke.tenDoi}</td>
+                                        <td>${thongke.tenSan}</td>
+                                        <td>${thongke.soTheVang}</td>
+                                        <td>${thongke.soTheDo}</td>
+                                        <td>${thongke.soPhaPhamLoi}</td>
+                                        <td>${thongke.tenVongDau}</td>
+                                        <td>${thongke.ngay} - ${thongke.gio}h</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

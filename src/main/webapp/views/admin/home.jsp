@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="display: none;">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -35,19 +35,17 @@
                                     <th>Tên Đăng Nhập</th>
                                     <th>Email</th>
                                     <th>Mật Khẩu</th>
-                                    <th>Ngày Đăng Ký</th>
-                                    <th>Ngày Cập Nhật</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><input type="checkbox" value="1"></td>
-                                        <td>Cuong</td>
-                                        <td>email</td>
-                                        <td>pass</td>
-                                        <td>created_date</td>
-                                        <td>updated_date</td>
-                                    </tr>
+                                    <c:forEach var="sanDau" items="${sanDaus}">
+                                        <tr>
+                                            <td><input type="checkbox" id="checkbox_${sanDau.id}" value="${sanDau.id}"></td>
+                                            <td>${sanDau.maSan}</td>
+                                            <td>${sanDau.tenSan}</td>
+                                            <td>${sanDau.diaChi}</td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>

@@ -1,8 +1,6 @@
 package com.penalty.service.impl;
 
-import com.penalty.dao.ICategoryDAO;
 import com.penalty.dao.IProductDAO;
-import com.penalty.model.CategoryModel;
 import com.penalty.model.ProductModel;
 import com.penalty.paging.Pageble;
 import com.penalty.service.IProductService;
@@ -11,9 +9,6 @@ import javax.inject.Inject;
 import java.util.List;
 
 public class ProductService implements IProductService {
-
-    @Inject
-    private ICategoryDAO iCategoryDAO;
 
     @Inject
     private IProductDAO iProductDAO;
@@ -31,9 +26,6 @@ public class ProductService implements IProductService {
 
     @Override
     public ProductModel update(ProductModel productModel) {
-        CategoryModel categoryModel = iCategoryDAO.findOne(productModel.getCategory_id());
-        productModel.setCategory_id(categoryModel.getCategory_id());
-        iProductDAO.update(productModel);
         return iProductDAO.findOne(productModel.getProduct_id());
     }
 
@@ -57,10 +49,7 @@ public class ProductService implements IProductService {
 
     @Override
     public ProductModel findOne(int product_id) {
-        ProductModel productModel = iProductDAO.findOne(product_id);
-        CategoryModel categoryModel = iCategoryDAO.findOne(productModel.getCategory_id());
-        productModel.setCategory_id(categoryModel.getCategory_id());
-        return productModel;
+        return iProductDAO.findOne(product_id);
     }
 
     @Override

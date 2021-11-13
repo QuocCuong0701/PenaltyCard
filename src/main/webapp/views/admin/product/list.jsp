@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Danh Sách Sản Phẩm</title>
+	<title>Thống Kê Thẻ Phạt</title>
 </head>
 
 <body>
@@ -23,13 +23,13 @@
 					<i class="flaticon-right-arrow"></i>
 				</li>
 				<li class="nav-item">
-					<a href="<c:url value="/admin-product?type=list"/> ">Quản Lý Sản Phẩm</a>
+					<a href="<c:url value="/admin-product?type=list"/> ">Thống Kê Thẻ Phạt</a>
 				</li>
 				<li class="separator">
 					<i class="flaticon-right-arrow"></i>
 				</li>
 				<li class="nav-item">
-					<a href="#">Danh Sách Sản Phẩm</a>
+					<a href="#">Danh Sách Thẻ Phạt</a>
 				</li>
 			</ul>
 		</div>
@@ -38,14 +38,14 @@
 				<div class="card">
 					<div class="card-header">
 						<div class="d-flex align-items-center">
-							<h4 class="card-title">Danh Sách Sản Phẩm</h4>
-							<button id="btnDelete" class="btn btn-primary btn-round ml-auto btn-danger btnDelete" style="margin-right: 5px;">
+							<h4 class="card-title">Danh Sách Thẻ Phạt</h4>
+							<%--<button id="btnDelete" class="btn btn-primary btn-round ml-auto btn-danger btnDelete" style="margin-right: 5px;">
 								<i class="fa fa-trash-alt"></i> Xóa Sản Phẩm
 							</button>
-							<button class="btn btn-primary btn-round" data-toggle="modal" data-target="#addRowModal">
+							<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 								<i class="fa fa-plus"></i>
 								Thêm Sản Phẩm
-							</button>
+							</button>--%>
 						</div>
 					</div>
 					<div class="card-body">
@@ -54,52 +54,38 @@
 								<thead>
 								<tr>
 									<th><input type="checkbox" class="checkAll" id="checkAll"></th>
-									<th>Tên Sản Phẩm</th>
-									<th>Hình Ảnh</th>
-									<th>Giá(VND)</th>
-									<th>Lượt Xem</th>
-									<th>Lượt Mua</th>
-									<th>Ngày Tạo</th>
-									<th>Ngày Cập Nhật</th>
-									<th>Hành Động</th>
+									<th>Mã đội</th>
+									<th>Tên đội</th>
+									<th>Số thẻ vàng</th>
+									<th>Số thẻ đỏ</th>
+									<th>Số pha phạm lỗi</th>
+									<th>Ghi chú</th>
+									<th>Hành động</th>
 								</tr>
 								</thead>
 								<tbody>
-								<c:forEach var="listProducts" items="${model.listResult}">
+								<c:forEach var="tddb" items="${model.listResult}">
 									<tr>
-										<td><input type="checkbox" id="checkbox_${listProducts.product_id}" value="${listProducts.product_id}"></td>
-										<td>${listProducts.product_name}</td>
-										<td><img src="<c:url value="${listProducts.product_image}"/>" style="height: 100px;"/></td>
-										<td><fmt:formatNumber pattern="###,###" value="${listProducts.product_price}"/></td>
-										<td><fmt:formatNumber pattern="###,###" value="${listProducts.view}"/></td>
-										<td><fmt:formatNumber pattern="###,###" value="${listProducts.buy}"/></td>
-										<td>${listProducts.created_date}</td>
-										<td>${listProducts.updated_date}</td>
+										<td><input type="checkbox" id="checkbox_${tddb.id}" value="${tddb.id}"></td>
+										<td>${tddb.maDoi}</td>
+										<td>${tddb.tenDoi}</td>
+										<td>${tddb.soTheVang}</td>
+										<td>${tddb.soTheDo}</td>
+										<td>${tddb.soPhaPhamLoi}</td>
+										<td>${tddb.ghiChu}</td>
 										<td>
 											<c:url var="editURL" value="/admin-product">
 												<c:param name="type" value="edit"/>
-												<c:param name="product_id" value="${listProducts.product_id}"/>
+												<c:param name="id" value="${tddb.id}"/>
+												<c:param name="tranDauId" value="${tddb.tranDauId}"/>
 											</c:url>
-											<a href="${editURL}" data-toggle="tooltip" title=""class="btn btn-link btn-primary" data-original-title="Cập nhật sản phẩm">
+											<a href="${editURL}" data-toggle="tooltip" title=""class="btn btn-link btn-primary" data-original-title="Xem Chi Tiết">
 												<i class="fa fa-edit"></i>
 											</a>
 										</td>
 									</tr>
 								</c:forEach>
 								</tbody>
-								<tfoot>
-								<tr>
-									<th></th>
-									<th>Tên Sản Phẩm</th>
-									<th>Hình Ảnh</th>
-									<th>Giá(VND)</th>
-									<th>Lượt Xem</th>
-									<th>Lượt Mua</th>
-									<th>Ngày Tạo</th>
-									<th>Ngày Cập Nhật</th>
-									<th>Hành Động</th>
-								</tr>
-								</tfoot>
 							</table>
 						</div>
 					</div>
@@ -128,9 +114,9 @@
 							<div class="form-group form-group-default" style="height: 46px;">
 								<select class="form-control" id="category_id" name="category_id" style="text-transform: capitalize;">
 									<option value="">Chọn loại sản phẩm</option>
-									<c:forEach var="item" items="${categories}">
+									<%--<c:forEach var="item" items="${categories}">
 										<option value="${item.category_id}">${item.category_name}</option>
-									</c:forEach>
+									</c:forEach>--%>
 								</select>
 							</div>
 						</div>

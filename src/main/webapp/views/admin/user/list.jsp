@@ -59,14 +59,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="listProducts" items="${model.listResult}">
+                                <c:forEach var="tddb" items="${model.listResult}">
                                     <tr>
-                                        <td><input type="checkbox" id="checkbox_${listProducts.user_id}" value="${listProducts.user_id}"></td>
-                                        <td>${listProducts.user_name}</td>
-                                        <td>${listProducts.user_email}</td>
-                                        <td>${listProducts.user_pass}</td>
-                                        <td>${listProducts.created_date}</td>
-                                        <td>${listProducts.updated_date}</td>
+                                        <td><input type="checkbox" id="checkbox_${tddb.user_id}" value="${tddb.user_id}"></td>
+                                        <td>${tddb.user_name}</td>
+                                        <td>${tddb.user_email}</td>
+                                        <td>${tddb.user_pass}</td>
+                                        <td>${tddb.created_date}</td>
+                                        <td>${tddb.updated_date}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

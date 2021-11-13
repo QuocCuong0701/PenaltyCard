@@ -1,9 +1,16 @@
 package com.penalty.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AbstractModel<T> {
     private Integer page;
     private Integer maxPageItem;

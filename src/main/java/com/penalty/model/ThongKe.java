@@ -9,16 +9,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TranDauDoiBong extends AbstractModel<TranDauDoiBong> {
+public class ThongKe extends AbstractModel<ThongKe> {
 
-    private int id;
-    private int tranDauId;
-    private int doiBongId;
     private String maDoi;
     private String tenDoi;
-    private String ghiChu;
+    private String tenSan;
     private int soTheVang;
     private int soTheDo;
     private int soPhaPhamLoi;
+    private String tenVongDau;
+    private String ngay;
+    private String gio;
 
 }

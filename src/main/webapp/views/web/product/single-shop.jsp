@@ -69,18 +69,18 @@
                             </div>
                         </div>
                     </div>
-                    <c:forEach var="listProducts" items="${model.listResult}">
+                    <c:forEach var="tddb" items="${model.listResult}">
                         <div class="row">
                             <div class="single-shop">
                                 <div class="col-md-4">
                                     <div class="single-product">
                                         <div class="single-product-img">
-                                            <a href="<c:url value="/product-detail?product_id=${listProducts.product_id}"/>">
-                                                <c:if test="${listProducts.product_image != null}">
-                                                    <img class="primary-img" src="<c:url value="${listProducts.product_image}"/>" alt="item" style="width: 264px;" />
-                                                    <img class="secondary-img" src="<c:url value="${listProducts.product_image}"/>" alt="item" style="width: 264px;" />
+                                            <a href="<c:url value="/product-detail?product_id=${tddb.product_id}"/>">
+                                                <c:if test="${tddb.product_image != null}">
+                                                    <img class="primary-img" src="<c:url value="${tddb.product_image}"/>" alt="item" style="width: 264px;" />
+                                                    <img class="secondary-img" src="<c:url value="${tddb.product_image}"/>" alt="item" style="width: 264px;" />
                                                 </c:if>
-                                                <c:if test="${listProducts.product_image == null}">
+                                                <c:if test="${tddb.product_image == null}">
                                                     <img class="primary-img" src="<c:url value="/template/web/img/notfound.png"/>" alt="item" style="width: 264px;" />
                                                 </c:if>
                                             </a>
@@ -90,7 +90,7 @@
                                 <div class="col-md-8">
                                     <div class="single-shop-content">
                                         <div class="shop-content-head fix">
-                                            <h1><a href="<c:url value="/product-detail?product_id=${listProducts.product_id}"/>">${listProducts.product_name}</a></h1>
+                                            <h1><a href="<c:url value="/product-detail?product_id=${tddb.product_id}"/>">${tddb.product_name}</a></h1>
                                             <div class="best-product-rating fix">
                                                 <a href="#"><i class="fa fa-star"></i></a>
                                                 <a href="#"><i class="fa fa-star"></i></a>
@@ -99,12 +99,12 @@
                                                 <a href="#"><i class="fa fa-star"></i></a>
                                                 <p>(3 khách hàng đánh giá)</p>
                                             </div>
-                                            <h3><fmt:formatNumber type="number" pattern="###,###" value="${listProducts.product_price}"/> đ</h3>
+                                            <h3><fmt:formatNumber type="number" pattern="###,###" value="${tddb.product_price}"/> đ</h3>
                                         </div>
                                         <div class="shop-content-bottom">
-                                            <p>${listProducts.product_description}</p>
+                                            <p>${tddb.product_description}</p>
                                             <div class="shop-button">
-                                                <a href="<c:url value="/cart?act=add&product_id=${listProducts.product_id}"/>" class="btn">Thêm Vào Giỏ</a>
+                                                <a href="<c:url value="/cart?act=add&product_id=${tddb.product_id}"/>" class="btn">Thêm Vào Giỏ</a>
                                                 <div class="shop-social-button fix">
                                                     <a href="#"><i class="fa fa-star"></i></a>
                                                     <a href="#"><i class="fa fa-exchange"></i></a>

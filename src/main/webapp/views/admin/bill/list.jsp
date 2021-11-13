@@ -62,30 +62,30 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="listProducts" items="${model.listResult}">
+                                <c:forEach var="tddb" items="${model.listResult}">
                                     <tr>
                                         <%--<td><input type="checkbox" id="checkbox_${listProducts.user_id}" value="${listProducts.user_id}"></td>--%>
-                                        <td>${listProducts.bill_id }</td>
-                                        <td>${listProducts.full_name}</td>
-                                        <td>${listProducts.address}</td>
-                                        <td>${listProducts.phone}</td>
-                                        <td>${listProducts.note}</td>
-                                        <td>${listProducts.created_date}</td>
-                                        <td>${listProducts.updated_date}</td>
+                                        <td>${tddb.bill_id }</td>
+                                        <td>${tddb.full_name}</td>
+                                        <td>${tddb.address}</td>
+                                        <td>${tddb.phone}</td>
+                                        <td>${tddb.note}</td>
+                                        <td>${tddb.created_date}</td>
+                                        <td>${tddb.updated_date}</td>
                                         <td>
-                                            <c:if test="${listProducts.confirmed == true}">
+                                            <c:if test="${tddb.confirmed == true}">
                                                 <button class="btn btn-success" style="width: 156px;">
                                                     <span class="btn-label"><i class="fa fa-check"></i></span> Đã xác nhận
                                                 </button>
                                             </c:if>
-                                            <c:if test="${listProducts.confirmed == false}">
+                                            <c:if test="${tddb.confirmed == false}">
                                                 <button class="btn btn-danger" style="width: 156px;">
                                                     <span class="btn-label"><i class="fa fa-times"></i></span> Chưa xác nhận
                                                 </button>
                                             </c:if>
                                         </td>
                                         <td>
-                                            <a href="${BillDetailURL}?type=list&bill_id=${listProducts.bill_id}" class="btn btn-primary billDetails" data-toggle="modal" data-target="#billDetailModal">
+                                            <a href="${BillDetailURL}?type=list&bill_id=${tddb.bill_id}" class="btn btn-primary billDetails" data-toggle="modal" data-target="#billDetailModal">
                                                 <i class="fa fa-info"></i>
                                             </a>
                                             <!-- Modal -->
@@ -115,7 +115,7 @@
                                                             </table>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="<c:url value="${APIurl}?bill_id=${listProducts.bill_id}"/>" id="btnConfirm" class="btn btn-primary btnConfirm"><i class="fa fa-check"></i> Xác nhận</a>
+                                                            <a href="<c:url value="${APIurl}?bill_id=${tddb.bill_id}"/>" id="btnConfirm" class="btn btn-primary btnConfirm"><i class="fa fa-check"></i> Xác nhận</a>
                                                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Đóng</button>
                                                         </div>
                                                     </div>

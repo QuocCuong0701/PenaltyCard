@@ -11,8 +11,7 @@ public class TranDau extends AbstractModel<TranDau> {
 
     private int id;
     private int vongDauId;
-    private int ketQuaId;
-    private String sanDauId;
+    private int sanDauId;
     private String ngay;
     private String gio;
     private String listIdTrongTai;

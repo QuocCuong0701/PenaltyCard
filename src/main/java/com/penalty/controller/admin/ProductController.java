@@ -1,11 +1,14 @@
 package com.penalty.controller.admin;
 
 import com.penalty.constant.SystemConstant;
-import com.penalty.model.ProductModel;
-import com.penalty.service.ICategoryService;
+import com.penalty.model.KetQua;
+import com.penalty.model.ThongKe;
+import com.penalty.model.TranDauDoiBong;
+import com.penalty.service.IKetQuaService;
 import com.penalty.service.IProductService;
+import com.penalty.service.IThongKeService;
+import com.penalty.service.ITranDauDoiBongService;
 import com.penalty.utils.FormUtil;
-import com.penalty.utils.MessageUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -20,26 +23,27 @@ import java.io.IOException;
 public class ProductController extends HttpServlet {
 
     @Inject
-    private IProductService iProductService;
+    private IThongKeService iThongKeService;
     @Inject
-    private ICategoryService iCategoryService;
+    private ITranDauDoiBongService iTranDauDoiBongService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ProductModel productModel = FormUtil.toModel(ProductModel.class, req);
+        TranDauDoiBong tranDauDoiBong = FormUtil.toModel(TranDauDoiBong.class, req);
+        ThongKe thongKe = FormUtil.toModel(ThongKe.class, req);
         String view = "";
-        if (productModel.getType().equals(SystemConstant.LIST)) {
-            productModel.setListResult(iProductService.findAll());
+        if (tranDauDoiBong.getType().equals(SystemConstant.LIST)) {
+            tranDauDoiBong.setListResult(iTranDauDoiBongService.findAll());
             view = "/views/admin/product/list.jsp";
-        } else if (productModel.getType().equals(SystemConstant.EDIT)) {
-            if (productModel.getProduct_id() != 0) {
-                productModel = iProductService.findOne(productModel.getProduct_id());
+            req.setAttribute(SystemConstant.MODEL, tranDauDoiBong);
+        } else if (tranDauDoiBong.getType().equals(SystemConstant.EDIT)) {
+            if (tranDauDoiBong.getId() != 0) {
+                thongKe.setListResult(iThongKeService.findAllByDoiBongId(tranDauDoiBong.getId()));
             }
             view = "/views/admin/product/edit.jsp";
+            req.setAttribute(SystemConstant.MODEL, thongKe);
         }
-        MessageUtil.showMessage(req);
-        req.setAttribute("categories", iCategoryService.findAll());
-        req.setAttribute(SystemConstant.MODEL, productModel);
+
         RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req, resp);
     }
