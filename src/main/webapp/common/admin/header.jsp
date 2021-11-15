@@ -72,7 +72,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Account Setting</a>--%>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<c:url value="/logout?action=logout"/>">Đăng Xuất</a>
+                                <a class="dropdown-item" href="<c:url value="#"/>">Đăng Xuất</a>
                             </li>
                             </div>
                             <div class="scroll-element scroll-x">

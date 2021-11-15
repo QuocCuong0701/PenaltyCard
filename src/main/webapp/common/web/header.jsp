@@ -48,10 +48,10 @@
                                 </c:if>
                             </c:if>
                             <c:if test="${empty USERMODEL}">
-                                <li><a href="<c:url value="/login?action=login"/>"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
+                                <li><a href="<c:url value="#"/>"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
                             </c:if>
                             <c:if test="${not empty USERMODEL}">
-                                <li><a href="<c:url value="/logout?action=logout"/>"><i class="fa fa-unlock"></i>Đăng Xuất</a></li>
+                                <li><a href="<c:url value="#"/>"><i class="fa fa-unlock"></i>Đăng Xuất</a></li>
                             </c:if>
                             <li><a href="<c:url value="/registration"/>"><i class="fa fa-pencil-square-o"></i>Đăng Ký</a></li>
                         </ul>

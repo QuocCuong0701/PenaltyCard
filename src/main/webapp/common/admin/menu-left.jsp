@@ -13,7 +13,7 @@
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									${USERMODEL.user_name}
-									<span class="user-level">Quản Trị Viên</span>
+									<span class="user-level">Ban Tổ Chức</span>
 									<span class="caret"></span>
 								</span>
                     </a>
