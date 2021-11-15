@@ -37,9 +37,15 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Thông Tin Chi Tiết</h4>
+                            <c:url var="editURL" value="/admin-product">
+                                <c:param name="type" value="list"/>
+                            </c:url>
+                            <a href="${editURL}" data-toggle="tooltip" title=""class="btn btn-primary btn-round ml-auto btn-danger btnDelete" data-original-title="Quay Lại">
+                                <i class="fa fa-arrow-circle-left"></i> Quay Lại
+                            </a>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body">Trang chủ
                         <div class="table-responsive">
                             <table id="add-row" class="display table table-striped table-hover" >
                                 <thead>

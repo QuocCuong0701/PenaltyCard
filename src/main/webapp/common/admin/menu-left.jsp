@@ -44,7 +44,7 @@
                 <li class="nav-item active">
                     <a data-toggle="collapse" href="<c:url value="/admin-home"/>" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
-                        <p>Bảng điều khiển</p>
+                        <p>Trang Chủ</p>
                     </a>
                 </li>
                 <li class="nav-section">
