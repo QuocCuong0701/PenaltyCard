@@ -1,6 +1,5 @@
 <%@include file="/common/taglib.jsp"%>
-<c:url var="APIurl" value="/api-admin-product"/>
-<c:url var ="ProductURL" value="/admin-product"/>
+<c:url var ="ProductURL" value="/admin-thong-ke"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +22,7 @@
 					<i class="flaticon-right-arrow"></i>
 				</li>
 				<li class="nav-item">
-					<a href="<c:url value="/admin-product?type=list"/> ">Thống Kê Thẻ Phạt</a>
+					<a href="<c:url value="/admin-thong-ke?type=list"/> ">Thống Kê Thẻ Phạt</a>
 				</li>
 				<li class="separator">
 					<i class="flaticon-right-arrow"></i>
@@ -74,7 +73,7 @@
 										<td>${tddb.soPhaPhamLoi}</td>
 										<td>${tddb.ghiChu}</td>
 										<td>
-											<c:url var="editURL" value="/admin-product">
+											<c:url var="editURL" value="/admin-thong-ke">
 												<c:param name="type" value="edit"/>
 												<c:param name="id" value="${tddb.id}"/>
 												<c:param name="tranDauId" value="${tddb.tranDauId}"/>

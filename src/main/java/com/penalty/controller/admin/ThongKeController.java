@@ -19,7 +19,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet(urlPatterns = {"/admin-product"})
+@WebServlet(urlPatterns = {"/admin-thong-ke"})
 public class ThongKeController extends HttpServlet {
 
     @Inject
@@ -34,7 +34,7 @@ public class ThongKeController extends HttpServlet {
         String view = "";
         if (tranDauDoiBong.getType().equals(SystemConstant.LIST)) {
             tranDauDoiBong.setListResult(iTranDauDoiBongService.findAll());
-            view = "/views/admin/product/list.jsp";
+            view = "/views/admin/thongKe/thongKeThePhat.jsp";
             req.setAttribute(SystemConstant.MODEL, tranDauDoiBong);
         } else if (tranDauDoiBong.getType().equals(SystemConstant.EDIT)) {
             List<ThongKe> listThongKe = iThongKeService.findAllByDoiBongId(tranDauDoiBong.getId());
@@ -46,7 +46,7 @@ public class ThongKeController extends HttpServlet {
             if (tranDauDoiBong.getId() != 0) {
                 thongKe.setListResult(listThongKe);
             }
-            view = "/views/admin/product/edit.jsp";
+            view = "/views/admin/thongKe/thongKeChiTiet.jsp";
             req.setAttribute(SystemConstant.MODEL, thongKe);
         }
 

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="APIurl" value="/api-admin-product"/>
-<c:url var ="ProductURL" value="/admin-product"/>
+<c:url var ="ProductURL" value="/admin-thong-ke"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +20,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<c:url value="/admin-product?type=list"/> ">Thống Kê Thẻ Phạt</a>
+                    <a href="<c:url value="/admin-thong-ke?type=list"/> ">Thống Kê Thẻ Phạt</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -37,7 +36,7 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Thông Tin Chi Tiết</h4>
-                            <c:url var="editURL" value="/admin-product">
+                            <c:url var="editURL" value="/admin-thong-ke">
                                 <c:param name="type" value="list"/>
                             </c:url>
                             <a href="${editURL}" data-toggle="tooltip" title=""class="btn btn-primary btn-round ml-auto btn-danger btnDelete" data-original-title="Quay Lại">

@@ -54,7 +54,7 @@
                     <h4 class="text-section">Chức Năng</h4>
                 </li>
                 <li class="nav-item">
-                    <a href="<c:url value="/admin-product?type=list"/>">
+                    <a href="<c:url value="/admin-thong-ke?type=list"/>">
                         <i class="fas fa-box-open"></i><p>Thống kê thẻ phạt</p>
                     </a>
                 </li>
