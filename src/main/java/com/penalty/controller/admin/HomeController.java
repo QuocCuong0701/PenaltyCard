@@ -24,7 +24,7 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
-        req.setAttribute("sanDaus", iSanDauService.findAll());
+//        req.setAttribute("sanDaus", iSanDauService.findAll());
         rd.forward(req, resp);
     }
 

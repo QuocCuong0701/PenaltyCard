@@ -1,11 +1,8 @@
 package com.penalty.controller.admin;
 
 import com.penalty.constant.SystemConstant;
-import com.penalty.model.KetQua;
 import com.penalty.model.ThongKe;
 import com.penalty.model.TranDauDoiBong;
-import com.penalty.service.IKetQuaService;
-import com.penalty.service.IProductService;
 import com.penalty.service.IThongKeService;
 import com.penalty.service.ITranDauDoiBongService;
 import com.penalty.utils.FormUtil;
@@ -18,9 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet(urlPatterns = {"/admin-product"})
-public class ProductController extends HttpServlet {
+public class ThongKeController extends HttpServlet {
 
     @Inject
     private IThongKeService iThongKeService;
@@ -37,8 +37,14 @@ public class ProductController extends HttpServlet {
             view = "/views/admin/product/list.jsp";
             req.setAttribute(SystemConstant.MODEL, tranDauDoiBong);
         } else if (tranDauDoiBong.getType().equals(SystemConstant.EDIT)) {
+            List<ThongKe> listThongKe = iThongKeService.findAllByDoiBongId(tranDauDoiBong.getId());
+            List<Integer> listTranDauIds = listThongKe.stream()
+                    .map(ThongKe::getTranDauId).collect(Collectors.toList());
+            List<TranDauDoiBong> listOpponents = iTranDauDoiBongService.findOpponentByTranDauId(listTranDauIds);
+            setOpponentName(listThongKe, listOpponents);
+            listThongKe.sort(Comparator.comparing(ThongKe::getSoTheDo).reversed());
             if (tranDauDoiBong.getId() != 0) {
-                thongKe.setListResult(iThongKeService.findAllByDoiBongId(tranDauDoiBong.getId()));
+                thongKe.setListResult(listThongKe);
             }
             view = "/views/admin/product/edit.jsp";
             req.setAttribute(SystemConstant.MODEL, thongKe);
@@ -46,6 +52,16 @@ public class ProductController extends HttpServlet {
 
         RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req, resp);
+    }
+
+    private void setOpponentName(List<ThongKe> listThongKe, List<TranDauDoiBong> listOpponents) {
+        for (ThongKe tk : listThongKe) {
+            for (TranDauDoiBong tddb : listOpponents) {
+                if (!tk.getMaDoi().equals(tddb.getMaDoi()) && tk.getTranDauId() == tddb.getTranDauId()) {
+                    tk.setTenDoiThu(tddb.getTenDoi());
+                }
+            }
+        }
     }
 
     @Override

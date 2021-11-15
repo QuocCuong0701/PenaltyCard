@@ -44,11 +44,11 @@
                             <table id="add-row" class="display table table-striped table-hover" >
                                 <thead>
                                 <tr>
-                                    <th>Mã đội</th>
-                                    <th>Tên đội</th>
+                                    <th>Id Trận đấu</th>
+                                    <th>Tên đối thủ</th>
                                     <th>Tên sân</th>
-                                    <th>Số thẻ vàng</th>
                                     <th>Số thẻ đỏ</th>
+                                    <th>Số thẻ vàng</th>
                                     <th>Số pha phạm lỗi</th>
                                     <th>Tên vòng đấu</th>
                                     <th>Thời gian</th>
@@ -57,11 +57,11 @@
                                 <tbody>
                                 <c:forEach var="thongke" items="${model.listResult}">
                                     <tr>
-                                        <td>${thongke.maDoi}</td>
-                                        <td>${thongke.tenDoi}</td>
+                                        <td>${thongke.tranDauId}</td>
+                                        <td>${thongke.tenDoiThu}</td>
                                         <td>${thongke.tenSan}</td>
-                                        <td>${thongke.soTheVang}</td>
                                         <td>${thongke.soTheDo}</td>
+                                        <td>${thongke.soTheVang}</td>
                                         <td>${thongke.soPhaPhamLoi}</td>
                                         <td>${thongke.tenVongDau}</td>
                                         <td>${thongke.ngay} - ${thongke.gio}h</td>

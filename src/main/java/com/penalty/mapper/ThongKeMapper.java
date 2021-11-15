@@ -19,6 +19,7 @@ public class ThongKeMapper implements RowMapper<ThongKe> {
             thongKe.setTenVongDau(rs.getString("ten_vong_dau"));
             thongKe.setNgay(rs.getString("ngay"));
             thongKe.setGio(rs.getString("gio"));
+            thongKe.setTranDauId(rs.getInt("tran_dau_id"));
             return thongKe;
         } catch (SQLException e) {
             return null;

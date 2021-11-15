@@ -9,4 +9,6 @@ public interface ITranDauDoiBongService {
     List<TranDauDoiBong> findAll();
 
     TranDauDoiBong findOne(int id);
+
+    List<TranDauDoiBong> findOpponentByTranDauId(List<Integer> tranDauIds);
 }

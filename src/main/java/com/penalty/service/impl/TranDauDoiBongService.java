@@ -21,4 +21,11 @@ public class TranDauDoiBongService implements ITranDauDoiBongService {
     public TranDauDoiBong findOne(int id) {
         return iTranDauDoiBongDAO.findOne(id);
     }
+
+    @Override
+    public List<TranDauDoiBong> findOpponentByTranDauId(List<Integer> tranDauIds) {
+        List<TranDauDoiBong> listOpponents = iTranDauDoiBongDAO.findOpponentByTranDauId(tranDauIds);
+
+        return listOpponents;
+    }
 }

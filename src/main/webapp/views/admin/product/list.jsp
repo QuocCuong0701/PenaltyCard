@@ -56,8 +56,8 @@
 									<th><input type="checkbox" class="checkAll" id="checkAll"></th>
 									<th>Mã đội</th>
 									<th>Tên đội</th>
+                                    <th>Số thẻ đỏ</th>
 									<th>Số thẻ vàng</th>
-									<th>Số thẻ đỏ</th>
 									<th>Số pha phạm lỗi</th>
 									<th>Ghi chú</th>
 									<th>Hành động</th>
@@ -69,8 +69,8 @@
 										<td><input type="checkbox" id="checkbox_${tddb.id}" value="${tddb.id}"></td>
 										<td>${tddb.maDoi}</td>
 										<td>${tddb.tenDoi}</td>
+                                        <td>${tddb.soTheDo}</td>
 										<td>${tddb.soTheVang}</td>
-										<td>${tddb.soTheDo}</td>
 										<td>${tddb.soPhaPhamLoi}</td>
 										<td>${tddb.ghiChu}</td>
 										<td>

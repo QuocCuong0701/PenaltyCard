@@ -9,4 +9,6 @@ public interface ITranDauDoiBongDAO extends GenericDAO<TranDauDoiBong> {
     List<TranDauDoiBong> findPenaltyCardsOfAllTeams();
 
     TranDauDoiBong findOne(int id);
+
+    List<TranDauDoiBong> findOpponentByTranDauId(List<Integer> tranDauIds);
 }
