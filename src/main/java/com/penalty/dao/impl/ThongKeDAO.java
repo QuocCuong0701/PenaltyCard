@@ -8,6 +8,11 @@ import java.util.List;
 
 public class ThongKeDAO extends AbstractDAO implements IThongKeDAO {
 
+    /**
+     * Danh sách thẻ phạt theo đội bóng
+     * @param doiBongId
+     * @return
+     */
     @Override
     public List<ThongKe> findAllPenaltyCardsByDoiBongId(int doiBongId) {
         String sql = "select db.ma_doi, db.ten_doi, sd.ten_san, tddb.so_the_vang, tddb.so_the_do, tddb.so_pha_pham_loi," +

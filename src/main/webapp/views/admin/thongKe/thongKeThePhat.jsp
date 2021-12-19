@@ -38,13 +38,12 @@
 					<div class="card-header">
 						<div class="d-flex align-items-center">
 							<h4 class="card-title">Danh Sách Thẻ Phạt</h4>
-							<%--<button id="btnDelete" class="btn btn-primary btn-round ml-auto btn-danger btnDelete" style="margin-right: 5px;">
-								<i class="fa fa-trash-alt"></i> Xóa Sản Phẩm
-							</button>
-							<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
-								<i class="fa fa-plus"></i>
-								Thêm Sản Phẩm
-							</button>--%>
+							<c:url var="editURL" value="/admin-thong-ke">
+								<c:param name="type" value="menu"/>
+							</c:url>
+							<a href="${editURL}" data-toggle="tooltip" title=""class="btn btn-primary btn-round ml-auto btn-danger btnDelete" data-original-title="Quay Lại">
+								<i class="fa fa-arrow-circle-left"></i> Quay Lại
+							</a>
 						</div>
 					</div>
 					<div class="card-body">
@@ -233,21 +232,6 @@
 		data['ids'] = ids;
 		deleteProduct(data);
 	});
-
-	function deleteProduct(data) {
-		$.ajax({
-			url: '${APIurl}',
-			type: 'DELETE',
-			contentType: 'application/json',
-			data: JSON.stringify(data),
-			success: function (result) {
-				window.location.href = "${ProductURL}?type=list&message=delete_success";
-			},
-			error: function (error) {
-				window.location.href = "${ProductURL}?type=list&message=error_system";
-			}
-		});
-	}
 
 </script>
 </body>

@@ -32,22 +32,29 @@ public class ThongKeController extends HttpServlet {
         TranDauDoiBong tranDauDoiBong = FormUtil.toModel(TranDauDoiBong.class, req);
         ThongKe thongKe = FormUtil.toModel(ThongKe.class, req);
         String view = "";
-        if (tranDauDoiBong.getType().equals(SystemConstant.LIST)) {
-            tranDauDoiBong.setListResult(iTranDauDoiBongService.findAll());
-            view = "/views/admin/thongKe/thongKeThePhat.jsp";
-            req.setAttribute(SystemConstant.MODEL, tranDauDoiBong);
-        } else if (tranDauDoiBong.getType().equals(SystemConstant.EDIT)) {
-            List<ThongKe> listThongKe = iThongKeService.findAllByDoiBongId(tranDauDoiBong.getId());
-            List<Integer> listTranDauIds = listThongKe.stream()
-                    .map(ThongKe::getTranDauId).collect(Collectors.toList());
-            List<TranDauDoiBong> listOpponents = iTranDauDoiBongService.findOpponentByTranDauId(listTranDauIds);
-            setOpponentName(listThongKe, listOpponents);
-            listThongKe.sort(Comparator.comparing(ThongKe::getSoTheDo).reversed());
-            if (tranDauDoiBong.getId() != 0) {
-                thongKe.setListResult(listThongKe);
-            }
-            view = "/views/admin/thongKe/thongKeChiTiet.jsp";
-            req.setAttribute(SystemConstant.MODEL, thongKe);
+        switch (tranDauDoiBong.getType()) {
+            case "menu":
+                view = "/views/admin/thongKe/thongKeMenu.jsp";
+                break;
+            case SystemConstant.LIST:
+                List<TranDauDoiBong> penaltyCardsOfAllTeams = iTranDauDoiBongService.findAll();
+                tranDauDoiBong.setListResult(penaltyCardsOfAllTeams);
+                view = "/views/admin/thongKe/thongKeThePhat.jsp";
+                req.setAttribute(SystemConstant.MODEL, tranDauDoiBong);
+                break;
+            case SystemConstant.EDIT:
+                List<ThongKe> listThongKe = iThongKeService.findAllByDoiBongId(tranDauDoiBong.getId());
+                List<Integer> listTranDauIds = listThongKe.stream()
+                        .map(ThongKe::getTranDauId).collect(Collectors.toList());
+                List<TranDauDoiBong> listOpponents = iTranDauDoiBongService.findOpponentByTranDauId(listTranDauIds);
+                setOpponentName(listThongKe, listOpponents);
+                listThongKe.sort(Comparator.comparing(ThongKe::getSoTheDo).reversed());
+                if (tranDauDoiBong.getId() != 0) {
+                    thongKe.setListResult(listThongKe);
+                }
+                view = "/views/admin/thongKe/thongKeChiTiet.jsp";
+                req.setAttribute(SystemConstant.MODEL, thongKe);
+                break;
         }
 
         RequestDispatcher rd = req.getRequestDispatcher(view);

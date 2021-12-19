@@ -7,6 +7,10 @@ import com.penalty.model.TranDauDoiBong;
 import java.util.List;
 
 public class TranDauDoiBongDAO extends AbstractDAO<TranDauDoiBong> implements ITranDauDoiBongDAO {
+    /**
+     * Thẻ phạt tất cả các đội
+     * @return
+     */
     @Override
     public List<TranDauDoiBong> findPenaltyCardsOfAllTeams() {
         String sql = " select tddb.id, tddb.tran_dau_id, tddb.doi_bong_id, db.ma_doi, db.ten_doi, tddb.ghi_chu, " +
@@ -16,6 +20,11 @@ public class TranDauDoiBongDAO extends AbstractDAO<TranDauDoiBong> implements IT
         return query(sql, new TranDauDoiBongMapper());
     }
 
+    /**
+     * Lấy thông tin 1 trận đấu của 1 đội bóng
+     * @param id
+     * @return
+     */
     @Override
     public TranDauDoiBong findOne(int id) {
         String sql = " select tddb.id, tddb.tran_dau_id, tddb.doi_bong_id, db.ma_doi, db.ten_doi, tddb.ghi_chu, " +
@@ -26,6 +35,11 @@ public class TranDauDoiBongDAO extends AbstractDAO<TranDauDoiBong> implements IT
         return tranDauDoiBongs.isEmpty() ? null : tranDauDoiBongs.get(0);
     }
 
+    /**
+     * Lấy danh sách đối thủ theo id trận đấu
+     * @param tranDauIds
+     * @return
+     */
     @Override
     public List<TranDauDoiBong> findOpponentByTranDauId(List<Integer> tranDauIds) {
         StringBuilder str = new StringBuilder();
