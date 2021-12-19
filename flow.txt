@@ -1,0 +1,7 @@
+- Client/Browser gửi request xuống Controller
+- Controller tiếp nhận yêu cầu, gọi đến các class/function xử lý ngiệp vụ dưới lớp Model
+- Model chứa những nghiệp vụ tương tác với dữ liệu. Bao gồm các class/function xử lý nhiều nghiệp vụ như kết nối DB, truy vấn dữ liệu. Ở đây gồm Service & DAO
+- Service có nhiệm vụ xử lý logic/nghiệp vụ, sau đó gọi xuống lớp DAO
+- DAO có nhiệm vụ thao tác với DB trả về dữ liệu, sau đó sử dụng các class mapper để map dữ liệu tương ứng với các Entity/Class
+- Sau khi Model trả dữ liệu về cho Controller thì Controller sẽ gửi dữ liệu đến VIew
+- View sẽ thực hiện đỗ dữ liệu lên các template như: JSP, HTML, ... sau đó hiển thị lên cho Client/Browser
